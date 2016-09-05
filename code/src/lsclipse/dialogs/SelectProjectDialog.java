@@ -17,28 +17,38 @@
 */
 package lsclipse.dialogs;
 
+
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.DirectoryDialog;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.Text;
 
 public class SelectProjectDialog extends Dialog {
-
+	
 	private String proj1 = "";
 	private String proj2 = "";
 
 	private Combo cmbProj1;
 	private Combo cmbProj2;
+	private Button buttonSelectDir;
+	
+	private String exportDir;
 
 	public SelectProjectDialog(Shell parentShell) {
 		super(parentShell);
+		
 	}
 
 	public String getProj1() {
@@ -47,6 +57,10 @@ public class SelectProjectDialog extends Dialog {
 
 	public String getProj2() {
 		return proj2;
+	}
+	
+	public String getExportDir() {
+		return exportDir;
 	}
 
 	public void okPressed() {
@@ -58,6 +72,8 @@ public class SelectProjectDialog extends Dialog {
 
 	protected Control createDialogArea(Composite parent) {
 		this.getShell().setText("Select Versions");
+		
+		setShellStyle(getShellStyle() | SWT.RESIZE); 
 
 		// overall layout
 		GridLayout layout = new GridLayout();
@@ -101,7 +117,29 @@ public class SelectProjectDialog extends Dialog {
 			cmbProj1.add(proj.getName());
 			cmbProj2.add(proj.getName());
 		}
+		
+		final Text exportDirText = new Text(leftPanel, 0);
+		exportDirText.setText("");
+		
+		buttonSelectDir = new Button(leftPanel, SWT.PUSH);
 
+		buttonSelectDir.setText("Select export directory");
+		buttonSelectDir.addListener(SWT.Selection, new Listener() {
+			public void handleEvent(Event event) {
+				DirectoryDialog directoryDialog = new DirectoryDialog(SelectProjectDialog.this.getShell());
+
+				directoryDialog.setFilterPath(exportDir);
+				directoryDialog.setMessage("Please select a directory and click OK");
+
+				String dir = directoryDialog.open();
+				if(dir != null) {
+					exportDirText.setText(dir);
+					exportDirText.pack();
+					exportDir = dir;
+				}
+			}
+		});
+		
 		return parent;
 	}
 }
