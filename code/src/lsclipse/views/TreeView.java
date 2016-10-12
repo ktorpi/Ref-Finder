@@ -400,6 +400,7 @@ public class TreeView extends ViewPart {
 					System.out.println("Empty");
 				} else {
 					try {
+						// TODO: some hardcoded stuff
 						PrintWriter pw = new PrintWriter("D:\\" + baseproj.getName() + "-" + newproj.getName() + ".ref");
 						PrintWriter pw2 = new PrintWriter("D:\\" + newproj.getName() + "-reftypes.csv");
 					
@@ -763,7 +764,7 @@ public class TreeView extends ViewPart {
 				temp.oldFacts.put(s, LSDiffRunner.getOldTypeToFileMap().get(s));
 				temp.newFacts.put(s, LSDiffRunner.getNewTypeToFileMap().get(s));
 			}
-		}		
+		}
 		return temp;
 	}
 

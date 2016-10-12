@@ -2,9 +2,6 @@ package lsclipse;
 
 public class LsclipseException extends Exception {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	public LsclipseException(String arg0, Throwable arg1) {
@@ -14,7 +11,5 @@ public class LsclipseException extends Exception {
 	public LsclipseException(String arg0) {
 		super(arg0);
 	}
-	
-	
 
 }

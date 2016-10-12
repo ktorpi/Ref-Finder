@@ -7,7 +7,7 @@ import lsclipse.LSDiffRunner;
 import lsclipse.views.Node;
 
 
-// csak 1 osztályt ad vissza a ref-finder
+// Reffinder gives only one class
 public class TeaseApartInheritanceExporter extends RefactoringCsvExporter {
 
 	TeaseApartInheritanceExporter() { }

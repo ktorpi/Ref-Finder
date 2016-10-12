@@ -6,7 +6,6 @@ import java.util.List;
 import lsclipse.LSDiffRunner;
 import lsclipse.views.Node;
 
-// ez elég pontatlan
 
 public class ConsolidateDuplicateCondFragmentsExporter extends RefactoringCsvExporter {
 

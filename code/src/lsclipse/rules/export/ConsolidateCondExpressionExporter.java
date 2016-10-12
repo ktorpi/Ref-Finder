@@ -7,7 +7,7 @@ import lsclipse.LSDiffRunner;
 import lsclipse.views.Node;
 
 
-//TODO: ezzel is vannak problémák
+//TODO: there are some issuies with the detecion of this refactoring
 public class ConsolidateCondExpressionExporter extends RefactoringCsvExporter {
 
 	ConsolidateCondExpressionExporter() {}

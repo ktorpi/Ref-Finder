@@ -6,7 +6,7 @@ import java.util.List;
 import lsclipse.views.Node;
 
 
-// TODO: ki kellene találni, hogy mik az egyes paraméterei ennek a refactoringnak
+// TODO: have to find out the what are the parameters of this refactoring
 public class DecomposeConditionalExporter extends RefactoringCsvExporter {
 
 	DecomposeConditionalExporter() {}

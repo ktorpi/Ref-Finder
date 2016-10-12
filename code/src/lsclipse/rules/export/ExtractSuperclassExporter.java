@@ -6,7 +6,7 @@ import java.util.List;
 import lsclipse.LSDiffRunner;
 import lsclipse.views.Node;
 
-// szerintem itt hiányos információk vannak alapból
+// incomplite informations here
 public class ExtractSuperclassExporter extends RefactoringCsvExporter {
 
 	ExtractSuperclassExporter() {}
