@@ -1,6 +1,7 @@
 /* 
 *    Ref-Finder
 *    Copyright (C) <2015>  <PLSE_UCLA>
+*    Copyright (C) <2016> University of Szeged
 *
 *    This program is free software: you can redistribute it and/or modify
 *    it under the terms of the GNU General Public License as published by
