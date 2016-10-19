@@ -125,8 +125,6 @@ public class TreeView extends ViewPart {
 	ArrayList<EditorInput> listDiffs = new ArrayList<EditorInput>();
 	IProject baseproj = null;
 	IProject newproj = null;
-	
-	private String exportDir = "";
 
 	/**
 	 * The constructor.
@@ -474,12 +472,10 @@ public class TreeView extends ViewPart {
 			e.printStackTrace();
 		}
 		
-		exportDir = seldiag.getExportDir();
-		
 		// do lsdiff (ish)
 		if ((new LSDiffRunner()).doFactExtractionForRefFinder(seldiag.getProj1(), seldiag.getProj2(), pbdiag)) {
 			refreshTree();
-			export(exportDir);
+			//export(exportDir); we don't do the export here
 		} else {
 			System.out.println("Something went wrong - fact extraction failed");
 		}
