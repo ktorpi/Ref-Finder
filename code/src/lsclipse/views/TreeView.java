@@ -115,7 +115,6 @@ public class TreeView extends ViewPart {
 	private Action doubleClickTreeAction;
 	private Action doubleClickListAction;
 	private Action selectAction;
-	private Action exportAction;
 	private Composite parent;
 	private Vector<Node> nodeList;
 	private Map<String, Node> allNodes;
@@ -164,7 +163,6 @@ public class TreeView extends ViewPart {
 		contributeToActionBars();
 
 		IToolBarManager mgr = getViewSite().getActionBars().getToolBarManager();
-		mgr.add(exportAction);
 		mgr.add(selectAction);
 	}
 
@@ -391,52 +389,6 @@ public class TreeView extends ViewPart {
 		selectAction.setImageDescriptor(PlatformUI.getWorkbench()
 				.getSharedImages()
 				.getImageDescriptor(ISharedImages.IMG_OBJ_FOLDER));
-		
-		exportAction = new Action("Export results...") {
-			public void run() {
-				if (nodeList.isEmpty()) {
-					System.out.println("Empty");
-				} else {
-					try {
-						// TODO: some hardcoded stuff
-						PrintWriter pw = new PrintWriter("D:\\" + baseproj.getName() + "-" + newproj.getName() + ".ref");
-						PrintWriter pw2 = new PrintWriter("D:\\" + newproj.getName() + "-reftypes.csv");
-					
-						pw2.println("refactoring;source;target;");
-						
-						for (int index = 0; index < nodeList.size(); index++) {
-							createDetailedList(index);
-							pw2.print(nodeList.get(index).getName() + ";");
-							boolean compare = false;
-							for (String s : list.getItems()) {
-								if (compare) {
-									pw2.print(s + ";");
-								}
-								pw.println(s);
-								if (s.startsWith("Compare:")) {
-									compare = true;
-								}
-							}							
-							pw.println();
-							pw2.println();
-						}
-						list.removeAll();
-						listDiffs.clear();
-						pw.close();
-						pw2.close();
-						MessageBox dialog = new MessageBox(parent.getShell(), SWT.ICON_INFORMATION | SWT.OK);
-						dialog.setText("Export dialog");
-						dialog.setMessage("Export is finished...");
-						dialog.open();
-					} catch (FileNotFoundException e) {
-						e.printStackTrace();
-					} 
-				}
-			}
-		};
-		exportAction.setImageDescriptor(PlatformUI.getWorkbench()
-				.getSharedImages()
-				.getImageDescriptor(ISharedImages.IMG_OBJ_FILE));
 	}
 
 	
@@ -793,7 +745,6 @@ public class TreeView extends ViewPart {
 	@Override
 	public void setFocus() {
 		// TODO Auto-generated method stub
-
 	}
 
 }

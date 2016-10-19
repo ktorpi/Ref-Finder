@@ -65,6 +65,7 @@ public class SelectModeDialog extends Dialog {
 		comboMode.setLayoutData(ldtDefault);
 		comboMode.add(TWO_VERSION_MODE);
 		comboMode.add(BATCH_MODE);
+		comboMode.select(0);
 
 		return parent;
 	}
@@ -73,6 +74,4 @@ public class SelectModeDialog extends Dialog {
 		return mode;
 	}
 	
-	
-
 }
